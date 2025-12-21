@@ -79,7 +79,21 @@ Open a **third** terminal window.
     ```
 
 ---
+## ✨ Project Screenshots
 
+### Customer Dashboard (Frontend)
+Here is a look at what the customers see when ordering food:
+
+![Customer Dashboard View 1](./Screenshots/dashboard1.png)
+<br>
+![Customer Dashboard View 2](./Screenshots/dashboard2.png)
+
+### Admin Panel
+Here is the interface for restaurant owners to manage orders and food items:
+
+![Admin Panel View 1](./Screenshots/admin1.png)
+<br>
+![Admin Panel View 2](./Screenshots/admin2.png)
 ## 🛠️ Built With
 
 * **Frontend & Admin:** React, Vite, CSS
