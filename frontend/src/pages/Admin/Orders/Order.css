@@ -1,0 +1,90 @@
+.order-table th {
+    white-space: nowrap;
+}
+
+.order-summary-cell {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.order-summary-cell svg {
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.order-summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.order-item-food {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #334155;
+}
+
+.customer-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.amount-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.amount-cell .text-muted {
+    font-size: 12px;
+}
+
+/* Status Select Styling */
+.status-select {
+    padding: 8px 32px 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 180px;
+}
+
+.status-waiting {
+    background-color: #f8fafc;
+    color: #475569;
+    border-color: #e2e8f0;
+}
+
+.status-processing {
+    background-color: #fffbeb;
+    color: #b45309;
+    border-color: #fde68a;
+}
+
+.status-out {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+}
+
+.status-delivered {
+    background-color: #f0fdf4;
+    color: #15803d;
+    border-color: #bbf7d0;
+}
+
+.status-cancelled {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border-color: #fecaca;
+}
+
+@media (max-width: 1024px) {
+    .order-summary-content {
+        max-width: 200px;
+    }
+}

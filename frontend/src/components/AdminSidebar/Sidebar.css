@@ -1,0 +1,142 @@
+.saas-sidebar {
+    width: 240px;
+    min-height: 100vh;
+    border-right: 1px solid #e2e8f0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar-section {
+    margin-bottom: 24px;
+}
+
+.sidebar-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0 12px;
+    margin-bottom: 8px;
+}
+
+.sidebar-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: #475569;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.sidebar-option svg {
+    color: #64748b;
+    transition: color 0.15s ease;
+}
+
+.sidebar-option p {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Hover State */
+.sidebar-option:hover {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.sidebar-option:hover svg {
+    color: #0f172a;
+}
+
+/* Active State */
+.sidebar-option.active {
+    background: #fff5f5;
+    color: #ea580c;
+    border-color: #ffedd5;
+}
+
+.sidebar-option.active svg {
+    color: #ea580c;
+}
+
+/* Footer Section */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.storefront-link {
+    color: #64748b;
+}
+
+.storefront-link:hover {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+/* Collapsed State */
+.saas-sidebar.collapsed {
+    width: 80px;
+    padding: 24px 12px;
+}
+
+.saas-sidebar.collapsed .sidebar-title {
+    display: none;
+}
+
+.saas-sidebar.collapsed .sidebar-option p {
+    display: none;
+}
+
+.saas-sidebar.collapsed .sidebar-option {
+    justify-content: center;
+    padding: 12px;
+}
+
+.saas-sidebar.collapsed .sidebar-option svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .saas-sidebar {
+        width: 80px;
+        padding: 24px 12px;
+    }
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .sidebar-option p {
+        display: none;
+    }
+
+    .sidebar-option {
+        justify-content: center;
+        padding: 12px;
+    }
+
+    .sidebar-option svg {
+        width: 24px;
+        height: 24px;
+    }
+}

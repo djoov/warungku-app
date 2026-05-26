@@ -1,54 +1,75 @@
-import userModel from "../models/userModel.js";
+import { getUserCollection } from "../models/userModel.js";
 
-// add items to user cart 
+// add items to user cart
 const addToCart = async (req, res) => {
     try {
-        let userData = await userModel.findById(req.body.userId)//the user id is from the middleware the we decode it and delte it;
-        let cartData = await userData.cartData;
+        const userRef = getUserCollection().doc(req.body.userId);
+        const userDoc = await userRef.get();
+        
+        if (!userDoc.exists) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        let userData = userDoc.data();
+        let cartData = userData.cartData || {};
+
         if (!cartData[req.body.itemId]) {
-            cartData[req.body.itemId] = 1;//basicly this it the add to cart functionality so if u add the card the mongo db cart data will get increased 
+            cartData[req.body.itemId] = 1;
+        } else {
+            cartData[req.body.itemId] += 1;
         }
-        else {
-            cartData[req.body.itemId] += 1;//and this one is for if u add the cart again that means it plus 2 so that means in the mongo db the data get increased into two test this in the postman
-        }
-        await userModel.findByIdAndUpdate(req.body.userId,{cartData:cartData});
-        res.json({success:true,message:"Item Added To Cart"});
+
+        await userRef.update({ cartData });
+        res.json({ success: true, message: "Added To Cart" });
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"});
-        
+        res.status(500).json({ success: false, message: "Error" });
     }
 }
 
-//remove items from user cart 
+// remove items from user cart
 const removeFromCart = async (req, res) => {
     try {
-        let userData = await userModel.findById(req.body.userId);//the user id is from the middleware the we decode it and delte it
-        let cartData = await userData.cartData;
-        if (cartData[req.body.itemId]>0) { //lets check if the item is in the cart or nah
-            cartData[req.body.itemId] -= 1;//if its in the cart then minus 1
-            
+        const userRef = getUserCollection().doc(req.body.userId);
+        const userDoc = await userRef.get();
+        
+        if (!userDoc.exists) {
+            return res.status(404).json({ success: false, message: "User not found" });
         }
-        await userModel.findByIdAndUpdate(req.body.userId,{cartData});
-        res.json({success:true,message:"Item Removed From Cart"});
+
+        let userData = userDoc.data();
+        let cartData = userData.cartData || {};
+
+        if (cartData[req.body.itemId] > 0) {
+            cartData[req.body.itemId] -= 1;
+        }
+
+        await userRef.update({ cartData });
+        res.json({ success: true, message: "Removed From Cart" });
     } catch (error) {
         console.log(error);
-        res.json({success:false,message:"Error"});
-        
+        res.status(500).json({ success: false, message: "Error" });
     }
 }
 
-// fetch user cart 
+// fetch user cart data
 const getCart = async (req, res) => {
     try {
-        let userData = await userModel.findById(req.body.userId);//the user id is from the middleware the we decode it and delte it
-        let cartData = await userData.cartData;
-        res.json({success:true,cartData});
-    } catch (error) {
-       console.log(error);
-       res.json({success:false,message:"Error"});
+        const userRef = getUserCollection().doc(req.body.userId);
+        const userDoc = await userRef.get();
         
+        if (!userDoc.exists) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        let userData = userDoc.data();
+        let cartData = userData.cartData || {};
+        
+        res.json({ success: true, cartData });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Error" });
     }
 }
 
-export {addToCart, removeFromCart, getCart}
+export { addToCart, removeFromCart, getCart }

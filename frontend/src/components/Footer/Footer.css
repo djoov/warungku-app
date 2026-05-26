@@ -1,56 +1,199 @@
-.footer{
-    color: #d9d9d9;
-    background-color: #323232;
+.footer {
+    color: #cbd5e1;
+    background-color: #0f172a;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding: 20px 8vw;
-    padding-top: 80px;
-    margin-top: 100px;
+    padding: 60px 8vw 20px;
+    margin-top: auto;
+    font-family: 'Inter', sans-serif;
 }
-.footer-content{
+
+.footer-content {
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
+    margin-bottom: 40px;
 }
-.footer-content-left, .footer-content-right, .footer-content-center{
+
+.footer-content-left, .footer-content-right, .footer-content-center {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: start;
+    align-items: flex-start;
 }
 
-.footer-content-left li, .footer-content-right li, .footer-content-center li{
+.footer-content-left .logo-text {
+    font-size: 32px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -1px;
+}
+
+.footer-content-left .logo-text .dot {
+    color: tomato;
+}
+
+.footer-content-left p {
+    line-height: 1.6;
+    font-size: 15px;
+    max-width: 400px;
+    color: #94a3b8;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.footer-social-icons img {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    background: #1e293b;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-social-icons img:hover {
+    background: tomato;
+    transform: translateY(-3px);
+}
+
+.footer-content-center h2, .footer-content-right h2 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.footer-content-center ul, .footer-content-right ul {
     list-style: none;
-    margin-bottom: 10px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-content-center li a, .footer-content-right li {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
 }
-.footer-content-right h2, .footer-content-center h2{
-    color: white;
-    
-}
-.footer-social-icons img{
-    width: 40px;
-    margin-right: 15px;
-}
-.footer hr{
-width: 100%;
-height: 2px;
-margin: 20px 0;
-background-color: grey;
-border: none;
+
+.footer-content-center li a:hover {
+    color: tomato;
 }
 
-@media (max-width:750px) {
-    .footer-content{
-        display: flex;
+.footer-content-right svg {
+    color: tomato;
+}
+
+/* Newsletter Section */
+.footer-newsletter {
+    width: 100%;
+    background: #1e293b;
+    padding: 30px 40px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.footer-newsletter h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.newsletter-input {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.newsletter-input input {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: #fff;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.newsletter-input input:focus {
+    border-color: tomato;
+}
+
+.newsletter-input button {
+    padding: 12px 24px;
+    background: tomato;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.newsletter-input button:hover {
+    background: #e64a19;
+}
+
+.footer hr {
+    width: 100%;
+    height: 1px;
+    margin: 0 0 20px 0;
+    background-color: #334155;
+    border: none;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: 14px;
+    color: #64748b;
+}
+
+@media (max-width: 900px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-newsletter {
         flex-direction: column;
-        gap: 35px;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 24px;
     }
-    .footer-copyright{
-        text-align: center;
+    .newsletter-input {
+        max-width: 100%;
     }
-    
+}
+
+@media (max-width: 650px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer-newsletter {
+        width: 100%;
+    }
+    .newsletter-input {
+        flex-direction: column;
+    }
 }

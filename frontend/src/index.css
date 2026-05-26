@@ -1,31 +1,170 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-*{
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: tomato;
+  --primary-hover: #e04b32;
+  --secondary-color: #49557e;
+  --text-dark: #262626;
+  --text-muted: #747474;
+  --text-light: #808080;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+  --border-light: #e2e2e2;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-md: 0 8px 15px rgba(0,0,0,0.1);
+  --shadow-lg: 0 15px 30px rgba(0,0,0,0.15);
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Outfit';
+  font-family: 'Outfit', sans-serif;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body{
+body {
   min-width: 100vh;
+  background-color: var(--white);
+  color: var(--text-dark);
 }
-a{
+
+::selection {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+a {
   text-decoration: none;
   color: inherit;
 }
 
-.app{
-  width: 80%;
-  margin: auto;
+/* Sticky Footer Layout Wrapper */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-@keyframes fadeIn
-{
-  0%{
+.app {
+  width: 80%;
+  margin: auto;
+  max-width: 1400px;
+  flex-grow: 1;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+/* Full width for Admin Dashboard */
+.app.admin-app {
+  width: 96%;
+  max-width: 100%;
+}
+
+.app-wrapper.admin-layout {
+  min-height: 100vh;
+}
+
+/* GLOBAL ANIMATIONS */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  0% {
     opacity: 0;
+    transform: translateY(30px);
   }
-  100%{
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(255, 99, 71, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 99, 71, 0);
+  }
+  100% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba(255, 99, 71, 0);
+  }
+}
+
+/* Admin Styles */
+.app-content {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.logo-text {
+  color: var(--primary-color);
+  font-size: max(2vw, 24px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+/* ===== Fly-to-Cart Animation ===== */
+.fly-to-cart {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  z-index: 9999;
+  pointer-events: none;
+  animation: flyToCart 0.7s cubic-bezier(0.2, 0.6, 0.35, 1) forwards;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
+}
+
+@keyframes flyToCart {
+  0% {
+    transform: translate(0, 0) scale(1);
     opacity: 1;
   }
+  50% {
+    transform: translate(calc(var(--fly-x) * 0.4), calc(var(--fly-y) - 80px)) scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(var(--fly-x), var(--fly-y)) scale(0.15);
+    opacity: 0.2;
+  }
+}
+
+/* Cart icon bounce when item arrives */
+.cart-bounce {
+  animation: cartBounce 0.4s ease;
+}
+
+@keyframes cartBounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.4); }
+  50% { transform: scale(0.9); }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); }
 }

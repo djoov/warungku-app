@@ -1,22 +1,198 @@
-.app-download{
-    margin: auto auto;
-    margin: 100px;
-    font-size: max(3vw, 20px);
-    text-align: center;
-    font-weight: 500;
+.app-download-section {
+    margin: 80px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
-.app-download-platforms{
+
+.why-warungku {
+    text-align: center;
+}
+
+.why-warungku h2 {
+    font-size: max(2.5vw, 22px);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.why-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    border-color: tomato;
+}
+
+.why-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background-color: #fff1f1;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.why-card:hover .why-icon {
+    background-color: tomato;
+    transform: scale(1.1);
+}
+
+.why-svg {
+    width: 32px;
+    height: 32px;
+    color: tomato;
+    transition: all 0.3s ease;
+}
+
+.why-card:hover .why-svg {
+    color: white;
+}
+
+.why-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.why-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Coming Soon App Section */
+.app-coming-soon {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe1e1 100%);
+    border-radius: 24px;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.app-coming-soon-content {
+    flex: 1;
+}
+
+.app-coming-soon-content h2 {
+    font-size: max(2.8vw, 28px);
+    font-weight: 800;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.text-highlight {
+    color: tomato;
+}
+
+.app-coming-soon-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 450px;
+}
+
+.app-store-badges {
+    display: flex;
+    gap: 16px;
+}
+
+.app-store-badges img {
+    height: 45px;
+    opacity: 0.6;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+    cursor: not-allowed;
+}
+
+.app-store-badges img:hover {
+    opacity: 0.8;
+}
+
+.app-coming-soon-img {
+    flex: 1;
     display: flex;
     justify-content: center;
-    gap: max(2vw, 10px);
-    margin-top: 40px;
+    position: relative;
 }
-.app-download-platforms img{
-    width: max(30vw, 120px);
-    cursor: pointer;
-    max-width: 180px;
-    transition: 0.5s;
+
+.app-coming-soon-img img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
+    border: 1px solid rgba(255, 99, 71, 0.5); /* Garis tipis estetik di tepi gambar */
+    border-radius: 24px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+    box-shadow: 0 4px 15px rgba(255, 99, 71, 0.05);
 }
-.app-download-platforms img:hover{
-    transform: scale(1.05);
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media (max-width: 900px) {
+    .app-coming-soon {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .app-coming-soon-content p {
+        margin: 0 auto 30px;
+    }
+
+    .app-store-badges {
+        justify-content: center;
+    }
+
+    .app-coming-soon-img img {
+        max-height: 300px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .why-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .why-card {
+        padding: 20px 16px;
+    }
 }

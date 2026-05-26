@@ -1,11 +1,3 @@
-import mongoose from "mongoose"
+import { db } from '../config/db.js';
 
-const userSchema = new mongoose.Schema({
-    name:{type:String,required:true},
-    email:{type:String,required:true,unique:true},
-    password:{type:String,required:true},
-    cartData:{type:Object,default:{}}
-}, {minimize:false})
-
-const userModel = mongoose.models.user || mongoose.model("user",userSchema);
-export default userModel;
+export const getUserCollection = () => db.collection("users");
