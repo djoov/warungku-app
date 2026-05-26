@@ -39,6 +39,10 @@ app.get("/", (req, res) => {
     res.send("API Working - Firebase Connected 🔥")
 })
 
-app.listen(port, () => {
-    console.log(`Listening to requests on http://localhost:${port}`)
-})
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => {
+        console.log(`Listening to requests on http://localhost:${port}`)
+    })
+}
+
+export default app;

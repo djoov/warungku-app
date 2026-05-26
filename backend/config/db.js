@@ -8,9 +8,16 @@ let bucket;
 
 export const connectDB = () => {
     try {
-        // Load the service account key JSON file
-        const serviceAccountRaw = fs.readFileSync('./serviceAccountKey.json');
-        const serviceAccount = JSON.parse(serviceAccountRaw);
+        let serviceAccount;
+        
+        // 1. Cek apakah ada Environment Variable (Untuk Vercel / Production)
+        if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+            serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+        } else {
+            // 2. Jika tidak ada, gunakan file lokal (Untuk Development di laptop)
+            const serviceAccountRaw = fs.readFileSync('./serviceAccountKey.json');
+            serviceAccount = JSON.parse(serviceAccountRaw);
+        }
 
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount),
