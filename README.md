@@ -1,29 +1,98 @@
-# Project UAS Remesan 🍔
+# WarungKu App 🍔
 
-This is a complete food delivery application consisting of three parts:
-1. **Backend:** Node.js & Express API connected to **Firebase Firestore & Storage**.
-2. **Frontend:** React + Vite customer-facing application.
-3. **Admin Panel:** React + Vite dashboard for managing orders/food.
+WarungKu adalah aplikasi layanan pesan antar makanan dengan dua antarmuka utama:
 
----
-
-## 📋 Prerequisites (Requirements)
-
-* **Node.js & npm:**
-    * Download and install from: [nodejs.org](https://nodejs.org/)
-    * Check if installed by running: `node -v` and `npm -v` in your terminal.
-
-* **Firebase Project:**
-    * This project uses Firebase Firestore (database) and Firebase Storage (image uploads).
-    * Make sure Firebase Storage rules allow read/write (see below).
+1. **Frontend Customer:** Aplikasi React + Vite untuk pemesanan makanan pelanggan.
+2. **Backend API:** Server Node.js + Express yang terhubung ke Firebase Firestore dan Firebase Storage.
+3. **Admin Panel:** Dashboard React + Vite untuk manajemen menu, stok, pesanan, pengguna, dan POS.
 
 ---
 
-## 🔥 Firebase Storage Rules
+## 📌 Fitur Utama
 
-Go to [Firebase Console](https://console.firebase.google.com/) → Storage → Rules, and set:
+- Daftar menu dan pencarian makanan
+- Keranjang belanja dan proses pemesanan
+- Login pengguna dengan peran admin dan pelanggan
+- Dashboard admin untuk menambah, mengelola, dan menghapus menu
+- Manajemen pesanan, resep, inventori, dan pengguna
+- Upload gambar makanan melalui Firebase Storage
+- Autentikasi akses halaman admin dasar
 
+---
+
+## ⚙️ Persiapan Lingkungan
+
+1. Pastikan sudah terpasang:
+   - Node.js
+   - npm atau pnpm
+
+2. Jika menggunakan npm, jalankan dari root folder:
+
+   ```bash
+   npm install
+   npm install concurrently
+   cd frontend && npm install
+   cd ../backend && npm install
+   ```
+
+3. Jika menggunakan pnpm, jalankan di root folder:
+
+   ```bash
+   pnpm install
+   pnpm --dir frontend install
+   pnpm --dir backend install
+   ```
+
+4. Siapkan proyek Firebase dengan:
+   - Firestore
+   - Firebase Storage
+   - Konfigurasi kredensial Firebase di frontend
+   - Konfigurasi Firebase Admin di backend
+
+---
+
+## 📁 Struktur Proyek
+
+- `frontend/` - aplikasi React untuk pelanggan dan admin panel
+- `backend/` - API Express dan koneksi Firebase
+- `Screenshots/` - gambar tampilan aplikasi
+
+---
+
+## 🚀 Menjalankan Aplikasi
+
+Dari root folder proyek, jalankan:
+
+```bash
+npm run dev
 ```
+
+Perintah ini akan menjalankan:
+
+- Backend pada `http://localhost:4000`
+- Frontend customer pada `http://localhost:5173`
+
+> Catatan: Admin Panel berada dalam aplikasi frontend yang sama, diakses dengan login admin dan route `/admin`.
+
+---
+
+## 🔐 Rute & Akses
+
+- `http://localhost:5173/` - Halaman utama pelanggan
+- `http://localhost:5173/menu` - Menu makanan
+- `http://localhost:5173/cart` - Keranjang belanja
+- `http://localhost:5173/login` - Halaman login
+- `http://localhost:5173/admin/dashboard` - Dashboard admin setelah login
+
+---
+
+## 🔧 Konfigurasi Firebase
+
+Pastikan rule Firebase Storage dan Firestore sudah dikonfigurasi untuk pengembangan. Contoh rule minimal:
+
+### Firebase Storage
+
+```js
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
@@ -34,8 +103,9 @@ service firebase.storage {
 }
 ```
 
-Also set Firestore rules (Firestore Database → Rules):
-```
+### Firestore
+
+```js
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -46,44 +116,21 @@ service cloud.firestore {
 }
 ```
 
-> ⚠️ These rules allow public access. For production, add proper authentication rules.
+> ⚠️ Rule ini hanya untuk pengembangan. Untuk produksi, gunakan aturan keamanan Firebase yang sesuai.
 
 ---
 
-## 🚀 Quick Start (Single Command!)
+## 🛠️ Teknologi
 
-1. **Install all dependencies** (first time only):
-    ```bash
-    npm run install-all
-    ```
-
-2. **Run everything with one command:**
-    ```bash
-    npm run dev
-    ```
-
-This will start:
-- 🔵 **Backend** at `http://localhost:4000`
-- 🟢 **Frontend** at `http://localhost:5173`
-- 🟡 **Admin Panel** at `http://localhost:5174`
+- Frontend: React, Vite, React Router DOM, React Toastify
+- Backend: Node.js, Express, Firebase Admin, Multer, JWT, Midtrans
+- Database: Firebase Firestore
+- Storage: Firebase Storage
 
 ---
 
-## ✨ Project Screenshots
+## 📌 Catatan
 
-### Customer Dashboard (Frontend)
-![Customer Dashboard View 1](./Screenshots/dashboard1.png)
-<br>
-![Customer Dashboard View 2](./Screenshots/dashboard2.png)
-
-### Admin Panel
-![Admin Panel View 1](./Screenshots/admin1.png)
-<br>
-![Admin Panel View 2](./Screenshots/admin2.png)
-
-## 🛠️ Built With
-
-* **Frontend & Admin:** React, Vite, CSS
-* **Backend:** Node.js, Express.js
-* **Database:** Firebase Firestore
-* **Storage:** Firebase Storage
+- Pastikan `backend/server.js` terhubung ke Firebase dengan benar.
+- Pada `backend/server.js`, CORS mengizinkan `http://localhost:5173` dan `http://localhost:5174`.
+- Halaman admin membutuhkan login sebagai pengguna dengan peran `admin`.
