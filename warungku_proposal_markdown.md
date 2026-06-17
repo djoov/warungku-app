@@ -36,7 +36,7 @@ Fakultas Teknologi Informasi
 
 # A. Latar Belakang
 
-## A.1 Permasalahan yang Diangkat
+## A.1 Permasalahan yang Diangkat Angkat
 
 Warung remesan merupakan salah satu tulang punggung kuliner rakyat di Indonesia, khususnya di kota-kota padat seperti Depok. Namun, di balik perannya yang vital, mayoritas warung remesan masih beroperasi secara konvensional tanpa memanfaatkan teknologi digital sama sekali.
 
