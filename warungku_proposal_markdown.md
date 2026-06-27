@@ -5,7 +5,7 @@ Halaman 1
 
 # PROPOSAL BISNIS DIGITAL
 
-## WarungKu.
+## WarungKu
 
 ### Platform Digitalisasi Warung Remesan Lokal Berbasis Teknologi
 
